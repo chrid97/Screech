@@ -10,7 +10,7 @@ export interface Message {
   // dateSaved: Date;
 }
 
-export type Voices = "Brian" | "Amy" | "Emma";
+type Voices = string;
 
 function setSpeech(): Promise<SpeechSynthesisVoice[]> {
   return new Promise(function (resolve, reject) {
@@ -33,13 +33,9 @@ setSpeech().then((voices) => {
 });
 
 function playMessage(message: string) {
-  debugger;
-  const speechSynthesis = new SpeechSynthesisUtterance();
-  speechSynthesis.text = message;
-  speechSynthesis.voice = messageVoices[0];
-  window.speechSynthesis.pause();
-  window.speechSynthesis.speak(speechSynthesis);
-  console.log(message);
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(message);
+  window.speechSynthesis.speak(utterance);
 }
 
 export function Card({
