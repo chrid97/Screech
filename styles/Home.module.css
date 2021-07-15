@@ -18,7 +18,9 @@
 }
 
 .sub-header {
-  font-size: 2.67em;
+  font-size: 2.67vw;
+  /* font-size: 2.67em; */
+  /* font-size: 3vw; */
   letter-spacing: var(--text-tracking);
   margin-bottom: 0;
   color: white;
@@ -26,7 +28,8 @@
 }
 
 .title {
-  font-size: 12.5em;
+  /* font-size: 12.5em; */
+  font-size: 10vw;
   letter-spacing: var(--header-tracking);
   font-weight: bold;
   margin: 0;

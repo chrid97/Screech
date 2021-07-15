@@ -12,31 +12,42 @@ export interface Message {
 
 type Voices = string;
 
-function setSpeech(): Promise<SpeechSynthesisVoice[]> {
-  return new Promise(function (resolve, reject) {
-    let synth = window.speechSynthesis;
-    let id: any;
+// function setSpeech(): Promise<SpeechSynthesisVoice[]> {
+//   return new Promise(function (resolve, reject) {
+//     let synth = window.speechSynthesis;
+//     let id: any;
 
-    id = setInterval(() => {
-      if (synth.getVoices().length !== 0) {
-        resolve(synth.getVoices());
-        clearInterval(id);
-      }
-    }, 10);
-  });
-}
+//     id = setInterval(() => {
+//       if (synth.getVoices().length !== 0) {
+//         resolve(synth.getVoices());
+//         clearInterval(id);
+//       }
+//     }, 10);
+//   });
+// }
 
-let messageVoices: SpeechSynthesisVoice[] = [];
-setSpeech().then((voices) => {
-  console.log(voices);
-  messageVoices = voices;
-});
+// let messageVoices: SpeechSynthesisVoice[] = [];
+// setSpeech().then((voices) => {
+//   console.log(voices);
+//   messageVoices = voices;
+// });
 
-function playMessage(message: string) {
+// let voices: SpeechSynthesisVoice[];
+// if (window != undefined) {
+//   voices = window.speechSynthesis.getVoices();
+// }
+// window.speechSynthesis.onvoiceschanged = () => {
+//   voices = window.speechSynthesis.getVoices();
+//   console.log(voices);
+// };
+
+function playMessage(message: string): void {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(message);
   window.speechSynthesis.speak(utterance);
 }
+
+function changeVoices(): void {}
 
 export function Card({
   user,
@@ -55,13 +66,20 @@ export function Card({
       </div>
       <div className={styles["card-text"]}>{message}</div>
       <div className={styles["card-footer"]}>
-        <select className={styles["voice-dropdown"]} value={voice}>
-          {/* {messageVoices.map((voice, index) => (
+        <select
+          className={styles["voice-dropdown"]}
+          defaultValue={"DEFAULT"}
+          onChange={changeVoices}
+        >
+          <option value="DEFAULT" disabled>
+            Select a Voice
+          </option>
+          {/* {voices.map((voice, index) => (
             <option key={index}>{voice}</option>
           ))} */}
-          <option>Brian</option>
+          {/* <option>Brian</option>
           <option>Amy</option>
-          <option>Emma</option>
+          <option>Emma</option> */}
         </select>
         <button
           className={styles.cardButton}
