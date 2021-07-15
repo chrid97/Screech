@@ -1,0 +1,67 @@
+.card {
+  width: 482px;
+  height: 313px;
+  background: white;
+  border: 1px;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.card-header {
+  background-color: #df38ed;
+  height: 47px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.card-header:first-child {
+  letter-spacing: var(--text-tracking);
+}
+
+.card-text {
+  font-family: "Roboto", sans-serif;
+  padding: 3.5rem;
+  word-wrap: break-word;
+  overflow: auto;
+  height: 200px;
+}
+
+.card-footer {
+  padding: 0 15px;
+}
+
+.cardButton {
+  font-size: 24px;
+  letter-spacing: var(--text-tracking);
+  width: 126px;
+  height: 49px;
+  background: rgb(237, 56, 209);
+  background: linear-gradient(
+    180deg,
+    rgba(237, 56, 209, 1) 0%,
+    rgba(133, 56, 237, 1) 100%
+  );
+  color: white;
+  border-radius: 43px;
+  border: 0px;
+}
+
+.voice-dropdown {
+  font-size: 24px;
+  width: 305px;
+  height: 49px;
+  outline: 0;
+  border: 0;
+  color: black;
+  border-radius: 27px;
+  margin-right: 10px;
+}
+
+.voice-dropdown > option {
+  margin-left: 10px;
+}
