@@ -1,12 +1,12 @@
 .navbar {
   color: white;
   margin-top: 15px;
-  font-size: 1.67rem;
+  /* font-size: 1.67rem; */
   letter-spacing: var(--text-tracking);
 }
 
 .navbar > * {
   padding-left: 10px;
   margin: 0 15px;
-  font-size: 14px;
+  /* font-size: 14px; */
 }

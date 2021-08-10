@@ -13,7 +13,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: white;
-  font-size: 24px;
+  /* font-size: 24px; */
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -36,10 +36,12 @@
 }
 
 .cardButton {
-  font-size: 24px;
+  /* font-size: 24px; */
   letter-spacing: var(--text-tracking);
-  width: 126px;
-  height: 49px;
+  /* width: 126px; */
+  width: 45px;
+  height: 45px;
+  /* height: 49px; */
   background: rgb(237, 56, 209);
   background: linear-gradient(
     180deg,
@@ -52,8 +54,9 @@
 }
 
 .voice-dropdown {
-  font-size: 24px;
-  width: 305px;
+  /* font-size: 24px; */
+  /* width: 305px; */
+  width: 200px;
   height: 49px;
   outline: 0;
   border: 0;

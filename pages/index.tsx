@@ -1,9 +1,27 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { MessageSlider } from "../components";
 import { Message } from "../components/Card/Card";
+import React from "react";
+
+function useGetVoices(): SpeechSynthesisVoice[] {
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  useEffect(() => {
+    window.speechSynthesis.onvoiceschanged = () => {
+      if (window != undefined) {
+        setVoices(window.speechSynthesis.getVoices());
+      }
+    };
+  }, []);
+
+  return voices;
+}
+
+export let VoicesContext: any;
 
 export default function Home() {
+  VoicesContext = React.createContext(useGetVoices())
   return (
     <>
       <Head>
@@ -29,7 +47,9 @@ export default function Home() {
 
       <main className={styles.main}>
         {titles.map((title) => (
-          <MessageSlider savedMessages={data} title={title} key={title} />
+          <VoicesContext.Provider value={useGetVoices()}>
+            <MessageSlider messages={data} title={title} key={title} />
+          </VoicesContext.Provider>
         ))}
       </main>
     </>

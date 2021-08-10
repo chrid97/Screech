@@ -9,7 +9,7 @@
 .heading {
   color: white;
   font-weight: bold;
-  font-size: 80px;
+  /* font-size: 80px; */
   letter-spacing: var(--header-tracking);
   text-shadow: 0px 20px 20px rgba(0, 0, 0, 0.75);
 }
