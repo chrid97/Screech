@@ -1,4 +1,10 @@
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Card.module.css";
+import playIcon from "../../public/buttons-icons/Sound.svg";
+import copyIcon from "../../public/buttons-icons/Copy.svg";
+import likeIcon from "../../public/buttons-icons/Like.svg";
+import downloadIcon from "../../public/buttons-icons/Download.svg";
 
 export interface Message {
   uid: number;
@@ -12,50 +18,52 @@ export interface Message {
 
 type Voices = string;
 
-// function setSpeech(): Promise<SpeechSynthesisVoice[]> {
-//   return new Promise(function (resolve, reject) {
-//     let synth = window.speechSynthesis;
-//     let id: any;
+function useGetVoices(): SpeechSynthesisVoice[] {
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  useEffect(() => {
+    window.speechSynthesis.onvoiceschanged = () => {
+      if (window != undefined) {
+        setVoices(window.speechSynthesis.getVoices());
+      }
+    };
+  });
 
-//     id = setInterval(() => {
-//       if (synth.getVoices().length !== 0) {
-//         resolve(synth.getVoices());
-//         clearInterval(id);
-//       }
-//     }, 10);
-//   });
-// }
+  return voices;
+}
 
-// let messageVoices: SpeechSynthesisVoice[] = [];
-// setSpeech().then((voices) => {
-//   console.log(voices);
-//   messageVoices = voices;
-// });
-
-// let voices: SpeechSynthesisVoice[];
-// if (window != undefined) {
-//   voices = window.speechSynthesis.getVoices();
-// }
-// window.speechSynthesis.onvoiceschanged = () => {
-//   voices = window.speechSynthesis.getVoices();
-//   console.log(voices);
-// };
-
-function playMessage(message: string): void {
+function playMessage({ message }: Message): void {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(message);
   window.speechSynthesis.speak(utterance);
 }
 
+function copyMessage({ message }: Message): void {
+  navigator.clipboard.writeText(message);
+  alert("Message copied to clipboard");
+}
+
+function likeMessage() {}
+
+function downloadMessage() {}
+
 function changeVoices(): void {}
 
 export function Card({
+  uid,
   user,
   message,
   voice,
   numberOfLikes,
   numberOfTimesCopied,
 }: Message) {
+  const messageObj: Message = {
+    uid,
+    user,
+    message,
+    voice,
+    numberOfLikes,
+    numberOfTimesCopied,
+  };
   return (
     <div className={styles.card}>
       <div className={styles["card-header"]}>
@@ -74,21 +82,32 @@ export function Card({
           <option value="DEFAULT" disabled>
             Select a Voice
           </option>
-          {/* {voices.map((voice, index) => (
-            <option key={index}>{voice}</option>
-          ))} */}
-          {/* <option>Brian</option>
-          <option>Amy</option>
-          <option>Emma</option> */}
         </select>
-        <button
-          className={styles.cardButton}
-          onClick={() => playMessage(message)}
-        >
-          PLAY
-        </button>
+        {Actions.map((action) => Button({ message: messageObj, action }))}
       </div>
     </div>
+  );
+}
+
+function FooterBar() {}
+
+const Actions: [string, (e: Message) => void][] = [
+  [playIcon, playMessage],
+  [copyIcon, copyMessage],
+  [likeIcon, likeMessage],
+  [downloadIcon, downloadMessage],
+];
+
+interface ButtonProps {
+  message: Message;
+  action: [string, (e: Message) => void];
+}
+
+function Button({ message, action }: ButtonProps) {
+  return (
+    <button className={styles.cardButton} onClick={() => action[1](message)}>
+      <Image src={action[0]} alt="button" className={styles.buttonIcon} />
+    </button>
   );
 }
 
