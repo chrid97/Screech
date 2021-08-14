@@ -35,7 +35,7 @@ export interface Message {
 
 type Voices = SpeechSynthesisVoice | string;
 
-function playMessage(message: string): void {
+function playMessage({ message }: Message): void {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(message);
   window.speechSynthesis.speak(utterance);
