@@ -32,5 +32,4 @@ a {
   align-items: center;
   background-image: url(../public/background.png);
   background-size: cover;
-  overflow-x: hidden;
 }
