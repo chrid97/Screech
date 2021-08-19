@@ -1,4 +1,5 @@
 import styles from "./Card.module.css";
+import Button from "../Button/Button";
 
 function playMessage(message: string): void {
   window.speechSynthesis.cancel();
@@ -17,22 +18,13 @@ function Footer({ message }: { message: string }) {
             <option key={index}>{voice}</option>
           ))} */}
       </select>
-      <PlayButton {...{ message }} />
+      <PlayButton onClick={() => playMessage(message)} />
     </div>
   );
 }
 
-function PlayButton({ message }: { message: string }) {
-  return (
-    <button
-      className={styles.cardButton}
-      onClick={() => {
-        playMessage(message);
-      }}
-    >
-      PLAY
-    </button>
-  );
+function PlayButton({ onClick }: { onClick: () => void }) {
+  return <Button label="PLAY" onClick={() => onClick()} />;
 }
 
 export default Footer;
