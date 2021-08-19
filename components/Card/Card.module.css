@@ -34,6 +34,7 @@
 }
 
 .card-footer {
+  padding: 0 15px;
   margin-top: auto;
   margin-bottom: 10px;
   display: flex;
@@ -57,6 +58,7 @@
 }
 
 .voice-dropdown {
+  width: 100%;
   font-size: 24px;
   height: 49px;
   outline: 0;
