@@ -12,9 +12,11 @@ export interface Message {
   dateSaved?: Date;
 }
 
-type Voices = SpeechSynthesisVoice | string;
+export interface CardProps extends Message {
+  voices: SpeechSynthesisVoice[];
+}
 
-function changeVoices(): void {}
+type Voices = string;
 
 export function Card({
   user,
@@ -22,12 +24,13 @@ export function Card({
   voice,
   numberOfLikes,
   numberOfTimesCopied,
-}: Message) {
+  voices,
+}: CardProps) {
   return (
     <div className={styles.card}>
       <Header {...{ user, numberOfLikes, numberOfTimesCopied }} />
       <div className={styles["card-text"]}>{message}</div>
-      <Footer {...{ message }} />
+      <Footer {...{ message, voice, voices }} />
     </div>
   );
 }
