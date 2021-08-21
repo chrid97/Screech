@@ -1,0 +1,19 @@
+.container {
+  margin-top: 150px;
+}
+
+.textInput {
+  padding: 2.5em;
+}
+
+.input {
+  padding: 25px;
+  width: 720px;
+  height: 300px;
+  background-color: #e4e4e7;
+  border: 0;
+}
+
+.container:last-child {
+  background-color: white;
+}

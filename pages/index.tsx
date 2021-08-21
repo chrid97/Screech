@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Card, { Message } from "../components/Card/Card";
+import Link from "next/link";
 import useSpeechSynthesis from "../utils/useSpeechSynthesis";
 
 export default function Home() {
@@ -25,7 +26,9 @@ export default function Home() {
       <header className={styles.header}>
         <h2 className={styles["sub-header"]}>WELCOME TO</h2>
         <h1 className={styles.title}>SCREECH</h1>
-        <button className={styles.button}>NEW TTS MESSAGE</button>
+        <Link href="/NewMessage/" passHref>
+          <button className={styles.button}>NEW TTS MESSAGE</button>
+        </Link>
       </header>
 
       <main className={styles.main}>
