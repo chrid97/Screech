@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Card, { Message } from "../components/Card/Card";
+import useSpeechSynthesis from "../utils/useSpeechSynthesis";
 
 export default function Home() {
+  const { voices } = useSpeechSynthesis();
   return (
     <>
       <Head>
@@ -29,7 +31,9 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.grid}>
           {data.map((savedMessage) => {
-            return <Card {...savedMessage} key={savedMessage.uid} />;
+            return (
+              <Card {...savedMessage} {...{ voices }} key={savedMessage.uid} />
+            );
           })}
         </div>
       </main>
@@ -42,7 +46,7 @@ const data: Message[] = [
     uid: 0,
     user: "Chris",
     message: "dododobobobobgjubgjubgjubdododobobobobgjubgjubgjub",
-    voice: "Brian",
+    voice: "Google Deutsch",
     numberOfLikes: 100,
     numberOfTimesCopied: 100,
   },
@@ -51,7 +55,7 @@ const data: Message[] = [
     user: "Chris",
     message:
       "Don't you just hate it when your cat wakes you up like this? Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow. Meow.",
-    voice: "Amy",
+    voice: "Google US English",
     numberOfLikes: 100,
     numberOfTimesCopied: 100,
   },
@@ -60,7 +64,7 @@ const data: Message[] = [
     user: "Chris",
     message:
       ":a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a: :a:A NEGATIVE SQUARED CAPTIAL LETTER",
-    voice: "Brian",
+    voice: "Google UK English Female",
     numberOfLikes: 50,
     numberOfTimesCopied: 100,
   },
@@ -69,7 +73,7 @@ const data: Message[] = [
     user: "Chris",
     message:
       "The lawnmower goes shersheeeeeeerrerererereeeerrr vavavoom sherererererere and Rice burners go wowowowowowowowowowowowowowowowowowowowowowow",
-    voice: "Emma",
+    voice: "Google Nederlands",
     numberOfLikes: 50,
     numberOfTimesCopied: 100,
   },
@@ -78,7 +82,7 @@ const data: Message[] = [
     user: "Chris",
     message:
       "The lawnmower goes shersheeeeeeerrerererereeeerrr vavavoom sherererererere and Rice burners go wowowowowowowowowowowowowowowowowowowowowowow",
-    voice: "Emma",
+    voice: "Google italiano",
     numberOfLikes: 50,
     numberOfTimesCopied: 100,
   },
@@ -87,7 +91,7 @@ const data: Message[] = [
     user: "Chris",
     message:
       "The lawnmower goes shersheeeeeeerrerererereeeerrr vavavoom sherererererere and Rice burners go wowowowowowowowowowowowowowowowowowowowowowow",
-    voice: "Emma",
+    voice: "Google polski",
     numberOfLikes: 50,
     numberOfTimesCopied: 100,
   },

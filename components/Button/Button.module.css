@@ -1,0 +1,15 @@
+.button {
+  font-size: 24px;
+  letter-spacing: var(--text-tracking);
+  width: 126px;
+  height: 49px;
+  background: rgb(237, 56, 209);
+  background: linear-gradient(
+    180deg,
+    rgba(237, 56, 209, 1) 0%,
+    rgba(133, 56, 237, 1) 100%
+  );
+  color: white;
+  border-radius: 43px;
+  border: 0px;
+}
