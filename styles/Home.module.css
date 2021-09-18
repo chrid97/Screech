@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* maybe make 250 for 1440p */
   margin: 175px 0;
 }
 
@@ -19,8 +18,6 @@
 
 .sub-header {
   font-size: 2.67vw;
-  /* font-size: 2.67em; */
-  /* font-size: 3vw; */
   letter-spacing: var(--text-tracking);
   margin-bottom: 0;
   color: white;
@@ -28,7 +25,6 @@
 }
 
 .title {
-  /* font-size: 12.5em; */
   font-size: 10vw;
   letter-spacing: var(--header-tracking);
   font-weight: bold;
@@ -51,4 +47,13 @@
   color: white;
   border-radius: 43px;
   border: 0px;
+}
+
+.grid {
+  width: 99vw;
+  display: grid;
+  grid-template-rows: repeat(2, 350px);
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  justify-items: center;
+  align-items: center;
 }

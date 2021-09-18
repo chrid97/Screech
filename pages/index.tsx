@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { MessageSlider } from "../components";
-import { Message } from "../components/Card/Card";
+import Card, { Message } from "../components/Card/Card";
 
 export default function Home() {
   return (
@@ -28,15 +27,16 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        {titles.map((title) => (
-          <MessageSlider savedMessages={data} title={title} key={title} />
-        ))}
+        <div className={styles.grid}>
+          {data.map((savedMessage) => {
+            return <Card {...savedMessage} key={savedMessage.uid} />;
+          })}
+        </div>
       </main>
     </>
   );
 }
 
-const titles = ["Trending", "Recent", "Popular"];
 const data: Message[] = [
   {
     uid: 0,

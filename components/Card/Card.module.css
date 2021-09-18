@@ -1,22 +1,24 @@
 .card {
-  width: 482px;
-  height: 313px;
+  width: 460px;
+  height: 300px;
   background: white;
   border: 1px;
   border-radius: 10px;
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
-  background-color: #df38ed;
-  height: 47px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: white;
-  font-size: 24px;
   display: flex;
   justify-content: space-between;
+  background-color: #df38ed;
+  height: 40px;
+  color: white;
+  font-size: 20px;
   padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card-header:first-child {
@@ -25,14 +27,17 @@
 
 .card-text {
   font-family: "Roboto", sans-serif;
-  padding: 3.5rem;
+  padding: 2.5rem;
   word-wrap: break-word;
   overflow: auto;
-  height: 200px;
+  height: 150px;
 }
 
 .card-footer {
-  padding: 0 15px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .cardButton {
@@ -53,7 +58,6 @@
 
 .voice-dropdown {
   font-size: 24px;
-  width: 305px;
   height: 49px;
   outline: 0;
   border: 0;
